@@ -47,7 +47,7 @@ clean:
 
 test: package
 ## Tests the package.
-	$(CASK) exec $(EMACS) --batch \
+	$(CASK) exec $(EMACS) --batch -q \
 	  -l $(PACKAGE) \
 	  -l test/flycheck-swift-test.el \
 	  -f ert-run-tests-batch-and-exit

@@ -34,11 +34,6 @@
 (require 'flycheck)
 (require 'cl-lib)
 
-(defgroup flycheck-swift nil
-  "Configuration for swift-mode."
-  :group 'flycheck
-  :prefix "swift-")
-
 ;;; Flycheck
 
 (flycheck-def-executable-var swift "swiftc")

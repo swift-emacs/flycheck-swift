@@ -30,16 +30,16 @@
 (require 'ert)
 (require 'cl-lib)
 
-(flycheck-swift:setup)
+(flycheck-swift-setup)
 
-(defvar flycheck-swift:test:basedir (file-name-directory (or load-file-name buffer-file-name)))
+(defvar flycheck-swift-test-basedir (file-name-directory (or load-file-name buffer-file-name)))
 
-(ert-deftest flycheck-swift:passing-correct-arguments ()
+(ert-deftest flycheck-swift-passing-correct-arguments ()
   "Test (flycheck-checker-substituted-arguments 'swift)."
   (with-temp-buffer
     (let
         ((filename (concat
-                    (file-name-as-directory flycheck-swift:test:basedir)
+                    (file-name-as-directory flycheck-swift-test-basedir)
                     "test.swift"))
          (expected-butlast
           (list
@@ -49,7 +49,7 @@
            "-sdk" "test-sdk-path"
            "-F" "search-path-1"
            "-F" "search-path-2"
-           (concat (file-name-as-directory flycheck-swift:test:basedir)
+           (concat (file-name-as-directory flycheck-swift-test-basedir)
                    "linked-source.swift")
            "-target" "test-target"
            "-import-objc-header" "test-objc-header.h"
@@ -60,15 +60,15 @@
       (setq buffer-file-name filename)
       (set-buffer-modified-p nil)
 
-      (setq-local flycheck-swift:extra-flags '("-extra-flag1" "-extra-flag2"))
-      (setq-local flycheck-swift:sdk-path "test-sdk-path")
-      (setq-local flycheck-swift:linked-sources '("*.swift"))
-      (setq-local flycheck-swift:framework-search-paths
+      (setq-local flycheck-swift-extra-flags '("-extra-flag1" "-extra-flag2"))
+      (setq-local flycheck-swift-sdk-path "test-sdk-path")
+      (setq-local flycheck-swift-linked-sources '("*.swift"))
+      (setq-local flycheck-swift-framework-search-paths
                   '("search-path-1" "search-path-2"))
-      (setq-local flycheck-swift:cc-include-search-paths
+      (setq-local flycheck-swift-cc-include-search-paths
                   '("include-search-path-1" "include-search-path-2"))
-      (setq-local flycheck-swift:target "test-target")
-      (setq-local flycheck-swift:import-objc-header "test-objc-header.h")
+      (setq-local flycheck-swift-target "test-target")
+      (setq-local flycheck-swift-import-objc-header "test-objc-header.h")
 
       (setq args (flycheck-checker-substituted-arguments 'swift))
 

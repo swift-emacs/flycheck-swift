@@ -1,4 +1,6 @@
 [![License GPL 3][badge-license]][copying]
+[![MELPA](https://melpa.org/packages/flycheck-swift-badge.svg)](https://melpa.org/#/flycheck-swift)
+[![MELPA](https://stable.melpa.org/packages/flycheck-swift-badge.svg)](https://melpa.org/#/flycheck-swift)
 
 # flycheck-swift
 
@@ -8,7 +10,7 @@ Flycheck extension for Apple's Swift programming language.
 
 ### Using MELPA
 
-Coming soon.
+Install `flycheck-swift` package from MELPA.
 
 ### Manual installation
 

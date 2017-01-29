@@ -44,9 +44,9 @@
   :safe #'flycheck-string-list-p)
 
 (flycheck-def-option-var flycheck-swift-sdk-path nil swift
-  "A path to the targeted SDK"
+  "A name of the targeted SDK or path to the targeted SDK"
   :type '(choice (const :tag "Don't link against sdk" nil)
-                 (string :tag "Targeted SDK path"))
+                 (string :tag "Targeted SDK path or name"))
   :safe #'stringp)
 
 (flycheck-def-option-var flycheck-swift-linked-sources '("*.swift") swift

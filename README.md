@@ -12,6 +12,20 @@ Flycheck extension for Apple's Swift programming language.
 
 Install `flycheck-swift` package from MELPA.
 
+Add the following line to the `~/.emacs.d/init.el` or `~/.emacs`.
+
+```
+(eval-after-load 'flycheck '(flycheck-swift-setup))
+```
+
+If you compile against iOS SDK, add the following lines:
+
+```
+(setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk")
+;; ↑ Select the appropriate SDK version you use
+(setq flycheck-swift-target "arm64-apple-ios10")
+```
+
 ### Manual installation
 
 Install [Flycheck](http://www.flycheck.org/en/latest/user/installation.html).
@@ -26,6 +40,14 @@ Add the following line to the `~/.emacs.d/init.el` or `~/.emacs`.
 
 ```
 (eval-after-load 'flycheck '(flycheck-swift-setup))
+```
+
+If you compile against iOS SDK, add the following lines:
+
+```
+(setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk")
+;; ↑ Select the appropriate SDK version you use
+(setq flycheck-swift-target "arm64-apple-ios10")
 ```
 
 ### Using cask (for developer)
@@ -44,6 +66,14 @@ Add the following line to the `~/.emacs.d/init.el` or `~/.emacs`.
 (eval-after-load 'flycheck '(flycheck-swift-setup))
 ```
 
+If you compile against iOS SDK, add the following lines:
+
+```
+(setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk")
+;; ↑ Select the appropriate SDK version you use
+(setq flycheck-swift-target "arm64-apple-ios10")
+```
+
 ## Customization
 
 ### flycheck-swift-executable
@@ -56,7 +86,7 @@ Extra flags prepended to arguments of swiftc.
 
 ### flycheck-swift-sdk-path
 
-A path to the targeted SDK.
+A name of the targeted SDK or path to the targeted SDK.
 
 ### flycheck-swift-linked-sources
 

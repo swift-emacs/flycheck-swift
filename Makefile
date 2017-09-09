@@ -5,7 +5,7 @@ VERSION := $(shell EMACS=$(EMACS) $(CASK) version)
 SRC = $(wildcard *.el)
 PACKAGE = dist/flycheck-swift-$(VERSION).el
 
-.PHONY: help all cask-install package install test clean
+.PHONY: help all deps package install test clean
 
 help:
 ## Shows this message.
@@ -22,12 +22,11 @@ help:
 all: package
 ## Builds the package.
 
-cask-install:
+deps:
 ## Installs the dependencies.
 	$(CASK) install
 
 $(PACKAGE): $(SRC) ## no-doc
-	$(MAKE) cask-install
 	rm -rf dist
 	$(CASK) package
 
@@ -39,15 +38,17 @@ install: package
 	$(CASK) exec $(EMACS) --batch \
 	  -l package \
 	  -f package-initialize \
+	  --eval "(add-to-list 'package-archives '(\"melpa\" . \"http://melpa.org/packages/\") t)" \
+	  -f package-refresh-contents \
 	  --eval '(package-install-file "$(PACKAGE)")'
 
 clean:
 ## Cleans the dist directory.
 	rm -rf dist
 
-test: package
+test:
 ## Tests the package.
 	$(CASK) exec $(EMACS) --batch -q \
-	  -l $(PACKAGE) \
+	  --eval "(add-to-list 'load-path \""$(shell readlink -f .)"\")" \
 	  -l test/flycheck-swift-test.el \
 	  -f ert-run-tests-batch-and-exit
